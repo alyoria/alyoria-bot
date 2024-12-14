@@ -1,0 +1,23 @@
+{
+  "name": "alyoria-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "tsc",
+    "dev": "tsnd --respawn --transpile-only --cls ./src/index.ts"
+  },
+  "author": "Plhume",
+  "license": "GPL-3.0",
+  "description": "",
+  "devDependencies": {
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "discord.js": "^14.16.3",
+    "dotenv": "^16.4.7",
+    "sheweny": "^4.2.1"
+  }
+}
