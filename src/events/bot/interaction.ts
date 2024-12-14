@@ -24,7 +24,7 @@ export class Ready extends Event {
             
             const embed = new EmbedBuilder({
                 title: 'Commande exécutée',
-                description: `Une commande a été exécutée par ${cmdUser} dans le serveur ${cmdGuild?.name}`,
+                description: `Une commande a été exécutée par ${cmdUser} dans le serveur \`\`${cmdGuild?.name}\`\``,
                 fields: [
                     {
                         name: 'Nom',

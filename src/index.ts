@@ -32,7 +32,7 @@ class Client extends ShewenyClient {
             ],
             presence: {
                 activities: [{
-                    name: '*invite | by @plhume',
+                    name: '/invite | by @plhume',
                     type: ActivityType.Playing
                 }]
             },
