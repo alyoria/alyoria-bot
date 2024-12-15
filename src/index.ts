@@ -32,9 +32,16 @@ class Client extends ShewenyClient {
             ],
             presence: {
                 activities: [{
-                    name: '/invite | by @plhume',
-                    type: ActivityType.Playing
-                }]
+                    name: process.env.NODE_ENV === 'development'
+                        ? 'la maintenance !'
+                        : '/invite | by @plhume',
+                    type: process.env.NODE_ENV === 'development'
+                        ? ActivityType.Watching
+                        : ActivityType.Playing
+                }],
+                status: process.env.NODE_ENV === 'development'
+                    ? 'dnd'
+                    : 'online'
             },
             joinThreadsOnCreate: true,
             mode: "development",
