@@ -1,7 +1,7 @@
 import { Event } from "sheweny";
 import type { ShewenyClient } from "sheweny";
 import { Logger } from "../../utils/Logger";
-import { ChannelType, Colors, EmbedBuilder, Events, Interaction, InteractionType } from "discord.js";
+import { ChannelType, Events, Interaction, InteractionType } from "discord.js";
 
 export class Ready extends Event {
     constructor(client: ShewenyClient) {
@@ -22,35 +22,12 @@ export class Ready extends Event {
             const cmdGuild = interaction.guild;
             const cmdUser = interaction.user;
             
-            const embed = new EmbedBuilder({
-                title: 'Commande exécutée',
-                description: `Une commande a été exécutée par ${cmdUser} dans le serveur \`\`${cmdGuild?.name}\`\``,
-                fields: [
-                    {
-                        name: 'Nom',
-                        value: '/' + cmdName.trimStart(),
-                        inline: true
-                    },
-                    {
-                        name: 'Utilisateur',
-                        value: `<@${cmdUser?.id}>`,
-                        inline: true
-                    },
-                    {
-                        name: 'Serveur',
-                        value: `${cmdGuild?.name}`,
-                        inline: true
-                    }
-                ],
-                color: Colors.DarkButNotBlack,
-                timestamp: new Date(),
-                footer: {
-                    text: `Alyoria © 2024`,
-                    icon_url: this.client.user?.displayAvatarURL()
-                }
+            (await this.client.guilds.fetch('1205816859316981780')).channels.fetch('1317615235301113936').then(channel => {
+                (channel as any).send({
+                    content: `🤖 Commande \`\`/${cmdName}\`\` exécutée par <@${cmdUser.id}> dans **${cmdGuild?.name}** à \`\`${new Date().toLocaleTimeString()}\`\` !`	,
+                    embeds: []
+                });
             });
-
-            await channel.send({ embeds: [embed] });
             return Logger.log("info", `Commande exécutée -> /${cmdName}`);
         }
     }
