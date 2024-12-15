@@ -44,7 +44,7 @@ class Client extends ShewenyClient {
                     : 'online'
             },
             joinThreadsOnCreate: true,
-            mode: "development",
+            mode: "production",
             managers: {
                 commands: {
                     directory: './commands',
