@@ -1,5 +1,5 @@
 {
-    "apps": [
+    "apps" [
       {
         "name": "alyoria-bot",
         "script": "npm",
