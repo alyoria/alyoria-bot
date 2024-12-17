@@ -1,0 +1,54 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model GuildsSettings {
+  guildId String @id @unique
+  lang String @default("en")
+  prefix String @default("a!")
+  beta Boolean @default(false)
+
+  logsEnabled Boolean @default(false)
+  ticketsEnabled Boolean @default(false)
+  anonymEnabled Boolean @default(false)
+
+  logsChannel String?
+  ticketsLogsChannel String?
+  anonymLogsChannel String?
+  arrivalsChannel String?
+  departuresChannel String?
+  rulesChannel String?
+  announcementsChannel String?
+  discussionsChannel String?
+  anonymChannel String?
+  autoVocalChannel String?
+
+  openTicketCategory String?
+  closeTicketCategory String?
+
+  @@map("guilds_settings")
+}
+
+model UserData {
+  userId String @id @unique
+  experience Int @default(0)
+  level Int @default(0)
+  messageCount Int @default(0)
+  vocalTime Int @default(0)
+  lastMessageAt DateTime?
+  lastVocalAt DateTime?
+
+  @@map("user_data")
+}
